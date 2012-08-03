@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookinfo>
+
+    <productname>Jenkins Tips N Tricks</productname>
+
+	<abstract>
+		<para>This is a DocBook with tips and tricks for Jenkins. The author is a plug-in 
+developer and Jenkins administrator that collects scripts, snippets of code, 
+general administration tips or any other kind of resource that can be of 
+interest of a user or administrator.
+		</para>
+		<para>
+	    <mediaobject>
+	      <imageobject role="html">
+	        <imagedata 
+	            align="center" 
+	            contentwidth="350px" 
+	            fileref="../media/jenkins_logo.png" 
+	            format="PNG">
+	        </imagedata>
+	      </imageobject>
+	    </mediaobject>
+	  </para>
+	  <para>In the future, parts of this document may be shared in Jenkins Wiki, this 
+DocBook document was created in GitHub as a way of motivating other users 
+(read geeks, dorks, Jenkins administrators or plug-in developers) to 
+contributing with it.</para>
+	</abstract>
+
+	<author>
+		<firstname>Bruno</firstname>
+		<othername>P.</othername>
+		<surname>Kinoshita</surname>
+		<email>kinow@apache.org</email>
+	</author>
+
+    <pubsnumber>1</pubsnumber>
+
+</bookinfo>

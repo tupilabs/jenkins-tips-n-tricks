@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+<!ENTITY bookinfo SYSTEM "bookinfo.xml">
+<!ENTITY ch01 SYSTEM "ch01.xml">
+<!ENTITY bibliography SYSTEM "bibliography.xml">
+]>
+<book>
+	<title>Developing Jenkins Plugins</title>
+
+	&bookinfo;
+
+	&ch01;
+
+	&bibliography;
+
+</book>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter id="chapter.1">
+  <title>Using the Groovy Postbuild plug-in to make build parameters visible from the build view</title>
+
+  <para>Origin of this tip: IRC chat between dyer and Cervator.</para>
+  
+  <para>The Groovy Postbuild plug-in, as the name suggests, permits you to 
+  add a post build step that executes some Groovy code. The plug-in has 
+  several badges that can be included to the build in the build history.</para>
+  
+  <para>The example usage in the plug-in Wiki will include a badge, an warning 
+  in the summary of the build and will mark the build as UNSTABLE.</para>
+  
+  <para>
+    <programlisting language="xml">
+<![CDATA[if(manager.logContains(".*Connection closed by remote host.*")) {
+  manager.addWarningBadge("Bad con, bad!")
+  manager.createSummary("warning.gif").appendText("<h1>Network fail detected :-(</h1>", false, false, false, "red")
+  manager.buildUnstable()
+}]]>
+    </programlisting>
+  </para>
+  
+  <para>
+    <mediaobject id="ch01_img1">
+      <imageobject>
+        <imagedata 
+          align="center" 
+          fileref="../media/ch1/project.png" 
+          width="100%" 
+          contentdept="100%" 
+          format="PNG" />
+      </imageobject>
+    </mediaobject>
+    <mediaobject id="ch01_img2">
+      <imageobject>
+        <imagedata 
+          align="center" 
+          fileref="../media/ch1/build.png" 
+          width="100%" 
+          contentdept="100%" 
+          format="PNG" />
+      </imageobject>
+    </mediaobject>
+  </para>
+  
+  <para>But at IRC the question was how to make visible parameters used during 
+  the job execution. So here's the code for doing that.</para>
+  
+  <para>
+    <programlisting language="xml">
+<![CDATA[def parametersActions = manager.build.getActions(hudson.model.ParametersAction.class)
+for(parameterAction in parametersActions) {
+  def parameters  = parameterAction.parameters
+  for(parameter in parameters) {
+      def name = parameter.name
+      def value = parameter.createVariableResolver(manager.build).resolve(parameter.name)
+      manager.listener.logger.append("Parameter "+name+" = "+value+"\n");
+  }
+}]]>
+    </programlisting>
+  </para>
+  
+  <para>
+    <mediaobject id="ch01_img3">
+      <imageobject>
+        <imagedata 
+          align="center" 
+          fileref="../media/ch1/parameters.png" 
+          width="100%" 
+          contentdept="100%" 
+          format="PNG" />
+      </imageobject>
+    </mediaobject>
+  </para>
+
+</chapter>
